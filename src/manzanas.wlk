@@ -9,7 +9,27 @@ class Manzana {
 	method image() {
 		// reeemplazarlo por los distintos colores de acuerdo a la cantidad de infectados
 		// también vale reemplazar estos dibujos horribles por otros más lindos
-		return "blanco.png"
+		return if( self.cantidadDeInfectados() == 0 )
+		{
+			"blanco.png"
+		} else if (self.cantidadDeInfectados().between(1,3))
+		{
+			"amarillo.png"
+		} else if (self.cantidadDeInfectados().between(4,7))
+		{
+			"naranja.png"
+		} else if (self.cantidadDeInfectados().between(8,personas.size() - 1))
+		{
+			"naranjaOscuro.png"
+		}
+	}
+	
+	method cantidadDePersonasEnLaManzana(){
+		return personas.size()
+	}
+	
+	method cantidadDeInfectados(){
+		return personas.count({ p => p.estaInfectada()})
 	}
 	
 	// este les va a servir para el movimiento
@@ -28,8 +48,8 @@ class Manzana {
 	}
 	
 	method cantidadContagiadores() {
-		return 0
 		// reemplazar por la cantidad de personas infectadas que no estan aisladas
+		return personas.count({p=> p.cantidadDeInfectados() and p.estaAislada()})
 	}
 	
 	method noInfectades() {
