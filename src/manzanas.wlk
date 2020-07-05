@@ -26,6 +26,10 @@ class Manzana {
 		{
 			"naranjaOscuro.png"
 		}
+		else if (self.cantidadDeInfectados() == personas.size()) //FALTABA EL SI ESTABAN todos INFECTADOS
+		{
+			"rojo.png"
+		}
 	}
 	//Cantidad de peronas que hay en la manzana
 	method cantidadDePersonasEnLaManzana(){
@@ -48,12 +52,12 @@ class Manzana {
 	}
 	
 	method personaSeMudaA(persona, manzanaDestino) {
-		// implementar
+		manzanaDestino.forEach({m=>m.personaEnManzana(persona)})
 	}
 	//Este es para saber las personas que estan infectadas y ademas no estan aisladas
 	method cantidadContagiadores() {
 		// reemplazar por la cantidad de personas infectadas que no estan aisladas
-		return personas.count({p=> p.cantidadDeInfectados() and p.estaAislada()})
+		return personas.count({p=> p.estaInfectada() and not p.estaAislada()}) //MODIFICADO Nico
 	}
 	
 	method noInfectades() {
@@ -83,3 +87,5 @@ class Manzana {
 
 //Hice el metodo cantidadContagiadores, cantidadDeInfectados
 //cantidadDePersonasEnLaManzana, image 
+
+// Modifique Image y cantidadContagiadores. Implemente personaSeMudaA. 5/7 Nico
