@@ -3,8 +3,12 @@ import simulacion.*
 import wollok.game.*
 
 class Manzana {
-	const property personas = []
+	const personas = []
 	var property position
+	
+	method personaEnManzana(persona){
+		personas.add(persona)
+	}
 	
 	method image() {
 		// reeemplazarlo por los distintos colores de acuerdo a la cantidad de infectados
@@ -23,11 +27,11 @@ class Manzana {
 			"naranjaOscuro.png"
 		}
 	}
-	
+	//Cantidad de peronas que hay en la manzana
 	method cantidadDePersonasEnLaManzana(){
 		return personas.size()
 	}
-	
+	//Para saber cuantos infectados hay
 	method cantidadDeInfectados(){
 		return personas.count({ p => p.estaInfectada()})
 	}
@@ -46,7 +50,7 @@ class Manzana {
 	method personaSeMudaA(persona, manzanaDestino) {
 		// implementar
 	}
-	
+	//Este es para saber las personas que estan infectadas y ademas no estan aisladas
 	method cantidadContagiadores() {
 		// reemplazar por la cantidad de personas infectadas que no estan aisladas
 		return personas.count({p=> p.cantidadDeInfectados() and p.estaAislada()})
@@ -76,3 +80,6 @@ class Manzana {
 		}
 	}
 }
+
+//Hice el metodo cantidadContagiadores, cantidadDeInfectados
+//cantidadDePersonasEnLaManzana, image 
