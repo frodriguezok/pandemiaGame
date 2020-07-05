@@ -9,7 +9,7 @@ object pandemiaGameConfig {
 	method configureGame() {
 		self.configureGameParameters()
 		self.agregarManzanas()
-		keyboard.e().onPressDo ({game.say(simulacion, "Día" + simulacion.diaActual())})	
+		keyboard.e().onPressDo ({game.say(game, "Día" + simulacion.diaActual())})	
 		// agregar las teclas de acciones
 		// después, al agente de salud y sus teclas de acciones y movimiento
 	}

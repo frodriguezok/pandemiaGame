@@ -7,7 +7,7 @@ class Manzana {
 	var property position
 	
 	method personaEnManzana(persona){
-		personas.add(persona)
+		personas.addAll(persona)
 	}
 	
 	method image() {
