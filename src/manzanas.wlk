@@ -10,6 +10,10 @@ class Manzana {
 		personas.addAll(persona)
 	}
 	
+	method sacarPersonaManzana(persona){
+		personas.remove(persona)
+	}
+	
 	method image() {
 		// reeemplazarlo por los distintos colores de acuerdo a la cantidad de infectados
 		// también vale reemplazar estos dibujos horribles por otros más lindos
@@ -46,13 +50,14 @@ class Manzana {
 	}
 
 	method pasarUnDia() {
-		self.transladoDeUnHabitante()
+		self.trasladoDeUnHabitante()
 		self.simulacionContagiosDiarios()
 		// despues agregar la curacion
 	}
 	
 	method personaSeMudaA(persona, manzanaDestino) {
-		manzanaDestino.forEach({m=>m.personaEnManzana(persona)})
+		self.sacarPersonaManzana(persona)
+		manzanaDestino.personaEnManzana([persona])
 	}
 	//Este es para saber las personas que estan infectadas y ademas no estan aisladas
 	method cantidadContagiadores() {
@@ -75,7 +80,7 @@ class Manzana {
 		}
 	}
 	
-	method transladoDeUnHabitante() {
+	method trasladoDeUnHabitante() {
 		const quienesSePuedenMudar = personas.filter({ pers => not pers.estaAislada() })
 		if (quienesSePuedenMudar.size() > 2) {
 			const viajero = quienesSePuedenMudar.anyOne()

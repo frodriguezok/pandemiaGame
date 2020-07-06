@@ -2,7 +2,7 @@ import manzanas.*
 import simulacion.*
 
 class Persona {
-	var property estaAislada = false
+	var property estaAislada
 	var property respetaCuarentena
 	var property diaQueSeInfecto = null
 	var estaInfectada = false
