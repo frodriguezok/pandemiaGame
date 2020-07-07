@@ -2,11 +2,11 @@ import manzanas.*
 import simulacion.*
 
 class Persona {
-	var property estaAislada
-	var property respetaCuarentena
+	var property estaAislada = false
+	var property respetaCuarentena = false
 	var property diaQueSeInfecto = null
 	var estaInfectada = false
-	var property presentaSintomas
+	var property presentaSintomas = false
 	
 	method estaInfectada() {
 		return estaInfectada
@@ -22,4 +22,5 @@ class Persona {
 // dia que se infecto, si esta infectada, y presenta sientomas.
 // A parte, hice el metodo estaInfectada, e infectarse()
 
+//inicialice las variables
 

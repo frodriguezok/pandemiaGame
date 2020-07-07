@@ -1,5 +1,7 @@
 import wollok.game.*
 import simulacion.*
+import manzanas.*
+import personas.*
 
 object pandemiaGameConfig {
 	method height() = 4
@@ -9,7 +11,10 @@ object pandemiaGameConfig {
 	method configureGame() {
 		self.configureGameParameters()
 		self.agregarManzanas()
-		keyboard.e().onPressDo ({game.say(game, "Día" + simulacion.diaActual())})	
+		keyboard.s().onPressDo ({
+			simulacion.diaActual(simulacion.diaActual() + 1)
+				
+		})
 		// agregar las teclas de acciones
 		// después, al agente de salud y sus teclas de acciones y movimiento
 	}
