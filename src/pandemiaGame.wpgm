@@ -6,15 +6,25 @@ import personas.*
 object pandemiaGameConfig {
 	method height() = 4
 	method width() = 6
-	method title() = "Simuléichon"
+	method title() = "Pandemia Game"
 	
 	method configureGame() {
 		self.configureGameParameters()
 		self.agregarManzanas()
 		keyboard.s().onPressDo ({
-			simulacion.diaActual(simulacion.diaActual() + 1)
-				
+				simulacion.siguienteDia()
+				game.say(indicador,"Termino el dia")
 		})
+		indicador.position(0,0)
+		game.addVisual(indicador)
+		keyboard.up().onPressDo{indicador.moveteArriba()}
+		keyboard.down().onPressDo{indicador.moveteAbajo()}
+		keyboard.left().onPressDo{indicador.moveteIzquierda()}
+		keyboard.right().onPressDo{indicador.moveteDerecha()}
+		keyboard.i().onPressDo{game.say(
+			indicador,"dia: " + simulacion.diaActual()
+			//"personas" + 
+		)}
 		// agregar las teclas de acciones
 		// después, al agente de salud y sus teclas de acciones y movimiento
 	}
@@ -31,15 +41,18 @@ object pandemiaGameConfig {
 				const nuevaManzana = simulacion.crearManzana()
 				nuevaManzana.position(game.at(x-1,y-1))
 				simulacion.agregarManzana(nuevaManzana)
+				
 				game.addVisual(nuevaManzana)
 			})
 		})
 	}
+	
 	
 }
 
 program pandemiaGame {
 	pandemiaGameConfig.configureGame()
 	game.start()
+
 }
 

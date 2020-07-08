@@ -7,7 +7,7 @@ class Manzana {
 	var property position
 	
 	method personaEnManzana(persona){
-		personas.addAll(persona)
+		personas.add(persona)
 	}
 	
 	method sacarPersonaManzana(persona){

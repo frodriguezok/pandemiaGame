@@ -1,6 +1,6 @@
 import personas.*
 import manzanas.*
-
+import wollok.game.*
 object simulacion {
 	var property diaActual = 0
 	const property manzanas = []
@@ -30,8 +30,44 @@ object simulacion {
 	}
 
 	method crearManzana() {
+		
 		const nuevaManzana = new Manzana()
-		nuevaManzana.personaEnManzana([new Persona()])
+		(0..self.personasPorManzana()).forEach({
+			m => nuevaManzana.personaEnManzana (new Persona())
+		}) 
+		
 		return nuevaManzana
+	}
+	
+	
+	method siguienteDia(){
+		self.diaActual(self.diaActual()+1)
+		manzanas.forEach({m=>m.pasarUnDia()})
+	}
+	
+}
+
+object indicador {
+	var position
+	var property image = "indicador.png"
+	
+	method position(x,y){
+		position = game.at(x,y)}
+	
+	method position(){return position}
+	
+	method moveteArriba(){
+		position = position.up(1)
+	}
+	method moveteAbajo(){
+		position = position.down(1)
+	}
+	
+	method moveteIzquierda(){
+		position = position.left(1)
+	}
+	
+	method moveteDerecha(){
+		position = position.right(1)
 	}
 }
