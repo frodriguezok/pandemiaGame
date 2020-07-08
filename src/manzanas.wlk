@@ -42,6 +42,10 @@ class Manzana {
 		return personas.count({ p => p.estaInfectada()})
 	}
 	
+	method cantidadConSintomas() {
+		return personas.count({ p => p.presentaSintomas()})
+	}
+	
 	// este les va a servir para el movimiento
 	method esManzanaVecina(manzana) {
 		return manzana.position().distance(position) == 1
@@ -73,6 +77,7 @@ class Manzana {
 			self.noInfectades().forEach({ persona => 
 				if (simulacion.debeInfectarsePersona(persona, cantidadContagiadores)) {
 					persona.infectarse()
+					persona.presentaSintomas(simulacion.presentarSintomas())
 				}
 			})
 		}

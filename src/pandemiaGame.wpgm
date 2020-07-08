@@ -26,8 +26,15 @@ object pandemiaGameConfig {
 		keyboard.right().onPressDo{indicador.moveteDerecha()}
 		keyboard.i().onPressDo{game.say(
 			indicador,"Día: " + simulacion.diaActual() +
-			"personas " + simulacion.cantidadPersonas()
+			" personas " + simulacion.cantidadPersonas() +
+			" Infectados " + simulacion.evaluarInfectados() +
+			" Con Sintomas " + simulacion.evaluarSintomas()
+			
 		)}
+		keyboard.a().onPressDo{
+			simulacion.agregarInfectado()
+		}
+		
 		// agregar las teclas de acciones
 		// después, al agente de salud y sus teclas de acciones y movimiento
 	}

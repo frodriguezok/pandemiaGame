@@ -6,6 +6,7 @@ object simulacion {
 	var property diaActual = 0
 	const property manzanas = []
 	var property cantidadPersonas = 0
+	//var property cantidadInfectados = 0
 	
 	// parametros del juego
 	const property chanceDePresentarSintomas = 30
@@ -25,10 +26,14 @@ object simulacion {
 	
 	method debeInfectarsePersona(persona, cantidadContagiadores) {
 		const chanceDeContagio = if (persona.respetaCuarentena()) 
-			self.chanceDeContagioConCuarentena() 
+			self.chanceDeContagioConCuarentena()
 			else 
 			self.chanceDeContagioSinCuarentena()
 		return (1..cantidadContagiadores).any({n => self.tomarChance(chanceDeContagio) })	
+	}
+	
+	method presentarSintomas() {
+		return self.tomarChance(self.chanceDePresentarSintomas())
 	}
 
 	method crearManzana() {
@@ -38,9 +43,24 @@ object simulacion {
 			m => nuevaManzana.personaEnManzana([new Persona()])
 		}) 
 		
-		cantidadPersonas += nuevaManzana.personas().size()
+		cantidadPersonas += nuevaManzana.cantidadDePersonasEnLaManzana()
 		
 		return nuevaManzana
+	}
+	
+	method agregarInfectado() {
+		const personaInfectada = new Persona()
+		personaInfectada.infectarse()
+		manzanas.anyOne().personaEnManzana([personaInfectada])
+		cantidadPersonas += 1
+	}
+	
+	method evaluarInfectados() {
+		return manzanas.sum({m=> m.cantidadDeInfectados()})
+	}
+	
+	method evaluarSintomas() {
+		return manzanas.sum({m=> m.cantidadConSintomas()})
 	}
 	
 	
@@ -51,7 +71,7 @@ object simulacion {
 	
 }
 
-object indicador {
+object agenteDeSalud {
 	var position
 	var property image = "indicador.png"
 	
@@ -74,4 +94,6 @@ object indicador {
 	method moveteDerecha(){
 		position = position.right(1)
 	}
+	
+	method aislarAInfectados() {}
 }
