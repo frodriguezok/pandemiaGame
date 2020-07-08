@@ -4,9 +4,12 @@ import manzanas.*
 import personas.*
 
 object pandemiaGameConfig {
+	
+	
 	method height() = 4
 	method width() = 6
 	method title() = "Pandemia Game"
+	
 	
 	method configureGame() {
 		self.configureGameParameters()
@@ -22,8 +25,8 @@ object pandemiaGameConfig {
 		keyboard.left().onPressDo{indicador.moveteIzquierda()}
 		keyboard.right().onPressDo{indicador.moveteDerecha()}
 		keyboard.i().onPressDo{game.say(
-			indicador,"dia: " + simulacion.diaActual()
-			//"personas" + 
+			indicador,"Día: " + simulacion.diaActual() +
+			"personas " + simulacion.cantidadPersonas()
 		)}
 		// agregar las teclas de acciones
 		// después, al agente de salud y sus teclas de acciones y movimiento

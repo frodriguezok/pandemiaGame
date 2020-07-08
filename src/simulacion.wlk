@@ -2,8 +2,10 @@ import personas.*
 import manzanas.*
 import wollok.game.*
 object simulacion {
+	
 	var property diaActual = 0
 	const property manzanas = []
+	var property cantidadPersonas = 0
 	
 	// parametros del juego
 	const property chanceDePresentarSintomas = 30
@@ -32,9 +34,11 @@ object simulacion {
 	method crearManzana() {
 		
 		const nuevaManzana = new Manzana()
-		(0..self.personasPorManzana()).forEach({
-			m => nuevaManzana.personaEnManzana (new Persona())
+		(1..self.personasPorManzana()).forEach({
+			m => nuevaManzana.personaEnManzana([new Persona()])
 		}) 
+		
+		cantidadPersonas += nuevaManzana.personas().size()
 		
 		return nuevaManzana
 	}

@@ -3,12 +3,10 @@ import simulacion.*
 import wollok.game.*
 
 class Manzana {
-	const personas = []
+	var property personas = []
 	var property position
 	
-	method personaEnManzana(persona){
-		personas.add(persona)
-	}
+	method personaEnManzana(persona) {personas.addAll(persona)}
 	
 	method sacarPersonaManzana(persona){
 		personas.remove(persona)

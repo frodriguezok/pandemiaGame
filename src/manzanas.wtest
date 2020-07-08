@@ -21,7 +21,7 @@ test "Prueba De manzanas" {
 	manzana2.position(new Position (x = 1, y = 1))
 	
 	
-	manzana1.personaEnManzana([p1,p2,p3,p4,p5,p6,p7,p8,p9,p10])
+	manzana1.personas([p1,p2,p3,p4,p5,p6,p7,p8,p9,p10])
 	assert.equals(10,manzana1.cantidadDePersonasEnLaManzana())
 	
 	simulacion.agregarManzana(manzana1)
