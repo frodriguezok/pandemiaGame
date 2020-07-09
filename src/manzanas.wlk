@@ -54,7 +54,7 @@ class Manzana {
 	method pasarUnDia() {
 		self.trasladoDeUnHabitante()
 		self.simulacionContagiosDiarios()
-		// despues agregar la curacion
+		self.terminoLaEnfermedad()	
 	}
 	
 	method personaSeMudaA(persona, manzanaDestino) {
@@ -69,7 +69,29 @@ class Manzana {
 	
 	method noInfectades() {
 		return personas.filter({ pers => not pers.estaInfectada() })
-	} 	
+	} 
+	
+	method infectades() {
+		return personas.filter({ pers => pers.estaInfectada() })
+	} 
+	
+	method aislarATodesConSintomas() {
+		const infectades = personas.filter({p=> p.estaInfectada() and p.presentaSintomas()})
+		infectades.forEach({p=> p.estaAislada(true)})
+	}
+	
+	method convencerManzana() {
+		personas.forEach({p=> p.estaAislada(true)})
+	}
+	
+	method terminoLaEnfermedad() {
+		const curados = self.infectades().filter({ p=>
+			simulacion.diaActual() - p.diaQueSeInfecto() == simulacion.duracionInfeccion()
+			})
+		curados.forEach({c=>c.estaInfectada(false)})
+		curados.forEach({c=>c.presentaSintomas(false)})
+		
+	}	
 	
 	method simulacionContagiosDiarios() { 
 		const cantidadContagiadores = self.cantidadContagiadores()

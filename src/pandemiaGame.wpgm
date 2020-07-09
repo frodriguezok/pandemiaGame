@@ -16,24 +16,37 @@ object pandemiaGameConfig {
 		self.agregarManzanas()
 		keyboard.s().onPressDo ({
 				simulacion.siguienteDia()
-				game.say(indicador,"Termino el dia")
+				console.println("Terminó el día")
 		})
-		indicador.position(0,0)
-		game.addVisual(indicador)
-		keyboard.up().onPressDo{indicador.moveteArriba()}
-		keyboard.down().onPressDo{indicador.moveteAbajo()}
-		keyboard.left().onPressDo{indicador.moveteIzquierda()}
-		keyboard.right().onPressDo{indicador.moveteDerecha()}
-		keyboard.i().onPressDo{game.say(
-			indicador,"Día: " + simulacion.diaActual() +
-			" personas " + simulacion.cantidadPersonas() +
-			" Infectados " + simulacion.evaluarInfectados() +
-			" Con Sintomas " + simulacion.evaluarSintomas()
+		keyboard.i().onPressDo{ console.println(
+			"Día: " + simulacion.diaActual() +
+			" | Personas: " + simulacion.cantidadPersonas() +
+			" | Infectados: " + simulacion.evaluarInfectados() +
+			" | Infectados con síntomas: " + simulacion.evaluarSintomas()
 			
 		)}
+		
+		agenteDeSalud.position(0,0)
+		game.addVisual(agenteDeSalud)
+		
+		keyboard.up().onPressDo{agenteDeSalud.moveteArriba()}
+		keyboard.down().onPressDo{agenteDeSalud.moveteAbajo()}
+		keyboard.left().onPressDo{agenteDeSalud.moveteIzquierda()}
+		keyboard.right().onPressDo{agenteDeSalud.moveteDerecha()}
+		
 		keyboard.a().onPressDo{
 			simulacion.agregarInfectado()
+			console.println("Llego un infectado al barrio")
 		}
+		keyboard.x().onPressDo{
+			agenteDeSalud.aislarAInfectades()
+			console.println("Todxs lxs infectadxs con sintomas fueron aisladxs")
+		}
+		keyboard.z().onPressDo{
+			agenteDeSalud.convencerATodes()
+			console.println("Ahora todxs lxs habitantes de esta manzana respetan la cuarentena")
+		}
+		
 		
 		// agregar las teclas de acciones
 		// después, al agente de salud y sus teclas de acciones y movimiento

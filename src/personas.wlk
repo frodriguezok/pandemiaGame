@@ -3,9 +3,8 @@ import simulacion.*
 
 class Persona {
 	var property estaAislada = false
-	var property respetaCuarentena = false
 	var property diaQueSeInfecto = null
-	var estaInfectada = false
+	var property estaInfectada = false
 	var property presentaSintomas = false
 	
 	method estaInfectada() {
@@ -15,6 +14,10 @@ class Persona {
 	method infectarse() {
 		self.diaQueSeInfecto(simulacion.diaActual()) 
 		estaInfectada = true
+	}
+	
+	method respetaCuarentena() {
+		return self.estaAislada()
 	}
 
 }	

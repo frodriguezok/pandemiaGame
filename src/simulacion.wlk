@@ -1,12 +1,12 @@
 import personas.*
 import manzanas.*
 import wollok.game.*
+
 object simulacion {
 	
 	var property diaActual = 0
 	const property manzanas = []
 	var property cantidadPersonas = 0
-	//var property cantidadInfectados = 0
 	
 	// parametros del juego
 	const property chanceDePresentarSintomas = 30
@@ -73,7 +73,7 @@ object simulacion {
 
 object agenteDeSalud {
 	var position
-	var property image = "indicador.png"
+	var property image = "salud.png"
 	
 	method position(x,y){
 		position = game.at(x,y)}
@@ -95,5 +95,15 @@ object agenteDeSalud {
 		position = position.right(1)
 	}
 	
-	method aislarAInfectados() {}
-}
+	method aislarAInfectades() {
+		simulacion.manzanas().forEach({m=>m.aislarATodesConSintomas()})
+	}
+	
+	method convencerATodes() {
+		const manzanaActual = simulacion.manzanas().filter({m=> m.position() == self.position()})
+		manzanaActual.forEach({ma => ma.convencerManzana()})
+		}
+	}
+
+
+

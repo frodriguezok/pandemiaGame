@@ -2,7 +2,7 @@ import personas.*
 import manzanas.*
 import simulacion.*
 import wollok.game.*
-test "Prueba De manzanas" {
+/*test "Prueba De manzanas" {
 	const p1 = new Persona(estaAislada = false, respetaCuarentena = true, presentaSintomas = false )
 	const p2 = new Persona(estaAislada = false, respetaCuarentena = true, presentaSintomas = false )
 	const p3 = new Persona(estaAislada = false, respetaCuarentena = true, presentaSintomas = false )
@@ -31,4 +31,4 @@ test "Prueba De manzanas" {
 	
 	assert.equals(9,manzana1.cantidadDePersonasEnLaManzana())
 	assert.equals(1,manzana2.cantidadDePersonasEnLaManzana())
-}
+}*/
