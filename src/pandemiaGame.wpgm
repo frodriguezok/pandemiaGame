@@ -14,6 +14,7 @@ object pandemiaGameConfig {
 	method configureGame() {
 		self.configureGameParameters()
 		self.agregarManzanas()
+		//Comando para simular un día
 		keyboard.s().onPressDo ({
 				simulacion.siguienteDia()
 				console.println("Terminó el día")
@@ -28,28 +29,51 @@ object pandemiaGameConfig {
 		
 		agenteDeSalud.position(0,0)
 		game.addVisual(agenteDeSalud)
+		//Comandos para usar al agende de salud
 		
-		keyboard.up().onPressDo{agenteDeSalud.moveteArriba()}
-		keyboard.down().onPressDo{agenteDeSalud.moveteAbajo()}
-		keyboard.left().onPressDo{agenteDeSalud.moveteIzquierda()}
-		keyboard.right().onPressDo{agenteDeSalud.moveteDerecha()}
+		//Comando para subir una posicion al agente de salud
+		keyboard.up().onPressDo{
+            if(agenteDeSalud.position().y() == self.height()-1){
+               
+            }
+            else {agenteDeSalud.moveteArriba()}}
+            
+        //Comando para bajar una posicion al agente de salud   
+		keyboard.down().onPressDo{  if(agenteDeSalud.position().y() == 0){
+                
+            }
+            else {agenteDeSalud.moveteAbajo()}}
+        
+        //Comando para mover una posicion a la izquierda al agente de salud    
+		keyboard.left().onPressDo{  if(agenteDeSalud.position().x() == 0){
+               
+            }
+            else {agenteDeSalud.moveteIzquierda()}}
+        
+        //Comando para mover una posicion a la derecha al agente de salud     
+		keyboard.right().onPressDo{  if(agenteDeSalud.position().x() == self.width()-1){
+               
+            }
+            else {agenteDeSalud.moveteDerecha()}}
 		
+		//Comando para agregar un infectado a una manzana al azar
 		keyboard.a().onPressDo{
 			simulacion.agregarInfectado()
-			console.println("Llego un infectado al barrio")
+			console.println("Llego un infectadx al barrio")
 		}
+		
+		//Comando para aislar a les infectades con sintomas
 		keyboard.x().onPressDo{
 			agenteDeSalud.aislarAInfectades()
 			console.println("Todxs lxs infectadxs con sintomas fueron aisladxs")
 		}
+		
+		//Comando para convencer a todes que respeten la cuarentena
 		keyboard.z().onPressDo{
 			agenteDeSalud.convencerATodes()
 			console.println("Ahora todxs lxs habitantes de esta manzana respetan la cuarentena")
 		}
 		
-		
-		// agregar las teclas de acciones
-		// después, al agente de salud y sus teclas de acciones y movimiento
 	}
 		
 	method configureGameParameters() {

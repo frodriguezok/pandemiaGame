@@ -13,8 +13,7 @@ class Manzana {
 	}
 	
 	method image() {
-		// reeemplazarlo por los distintos colores de acuerdo a la cantidad de infectados
-		// también vale reemplazar estos dibujos horribles por otros más lindos
+
 		return if( self.cantidadDeInfectados() == 0 )
 		{
 			"blanco.png"
@@ -28,25 +27,24 @@ class Manzana {
 		{
 			"naranjaOscuro.png"
 		}
-		else if (self.cantidadDeInfectados() == personas.size()) //FALTABA EL SI ESTABAN todos INFECTADOS
+		else if (self.cantidadDeInfectados() == personas.size())
 		{
 			"rojo.png"
 		}
 	}
-	//Cantidad de peronas que hay en la manzana
+
 	method cantidadDePersonasEnLaManzana(){
 		return personas.size()
 	}
-	//Para saber cuantos infectados hay
+
 	method cantidadDeInfectados(){
 		return personas.count({ p => p.estaInfectada()})
 	}
-	
+
 	method cantidadConSintomas() {
 		return personas.count({ p => p.presentaSintomas()})
 	}
 	
-	// este les va a servir para el movimiento
 	method esManzanaVecina(manzana) {
 		return manzana.position().distance(position) == 1
 	}
@@ -61,10 +59,9 @@ class Manzana {
 		self.sacarPersonaManzana(persona)
 		manzanaDestino.personaEnManzana([persona])
 	}
-	//Este es para saber las personas que estan infectadas y ademas no estan aisladas
+	
 	method cantidadContagiadores() {
-		// reemplazar por la cantidad de personas infectadas que no estan aisladas
-		return personas.count({p=> p.estaInfectada() and not p.estaAislada()}) //MODIFICADO Nico
+		return personas.count({p=> p.estaInfectada() and not p.estaAislada()})
 	}
 	
 	method noInfectades() {
@@ -114,8 +111,3 @@ class Manzana {
 		}
 	}
 }
-
-//Hice el metodo cantidadContagiadores, cantidadDeInfectados
-//cantidadDePersonasEnLaManzana, image 
-
-// Modifique Image y cantidadContagiadores. Implemente personaSeMudaA. 5/7 Nico

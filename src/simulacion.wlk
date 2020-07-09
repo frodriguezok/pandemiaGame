@@ -15,11 +15,7 @@ object simulacion {
 	const property personasPorManzana = 10
 	const property duracionInfeccion = 20
 
-	/*
-	 * este sirve para generar un azar
-	 * p.ej. si quiero que algo pase con 30% de probabilidad pongo
-	 * if (simulacion.tomarChance(30)) { ... } 
-	 */ 	
+	
 	method tomarChance(porcentaje) = 0.randomUpTo(100) < porcentaje
 
 	method agregarManzana(manzana) { manzanas.add(manzana) }

@@ -21,9 +21,3 @@ class Persona {
 	}
 
 }	
-// Agregue atributos para registrar, si esta aislada, respeta la cuarentena
-// dia que se infecto, si esta infectada, y presenta sientomas.
-// A parte, hice el metodo estaInfectada, e infectarse()
-
-//inicialice las variables
-
