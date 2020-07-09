@@ -33,27 +33,19 @@ object pandemiaGameConfig {
 		
 		//Comando para subir una posicion al agente de salud
 		keyboard.up().onPressDo{
-            if(agenteDeSalud.position().y() == self.height()-1){
-               
-            }
+            if(agenteDeSalud.position().y() == self.height()-1){ }
             else {agenteDeSalud.moveteArriba()}}
             
         //Comando para bajar una posicion al agente de salud   
-		keyboard.down().onPressDo{  if(agenteDeSalud.position().y() == 0){
-                
-            }
+		keyboard.down().onPressDo{  if(agenteDeSalud.position().y() == 0){ }
             else {agenteDeSalud.moveteAbajo()}}
         
         //Comando para mover una posicion a la izquierda al agente de salud    
-		keyboard.left().onPressDo{  if(agenteDeSalud.position().x() == 0){
-               
-            }
+		keyboard.left().onPressDo{  if(agenteDeSalud.position().x() == 0){ }
             else {agenteDeSalud.moveteIzquierda()}}
         
         //Comando para mover una posicion a la derecha al agente de salud     
-		keyboard.right().onPressDo{  if(agenteDeSalud.position().x() == self.width()-1){
-               
-            }
+		keyboard.right().onPressDo{  if(agenteDeSalud.position().x() == self.width()-1){ }
             else {agenteDeSalud.moveteDerecha()}}
 		
 		//Comando para agregar un infectado a una manzana al azar
